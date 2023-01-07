@@ -1,32 +1,40 @@
 package post
 
-import . "app/core"
+import "app/core"
 
-func Post() Element {
-	return Box(Args{
-		Class: "parent",
-	},
-		Box(Args{
-			Class: "avatar",
+func New(args Args) core.Element {
+
+	return core.Box(
+		core.Args{
+			Class: "parent",
 		},
-			Img(Args{
-				Alt: "avatar",
-			}),
+		core.Box(
+			core.Args{
+				Class: "avatar",
+			},
+			core.Img(
+				core.Args{
+					Alt: "avatar",
+					Src: args.Image,
+				}),
 		),
-		Box(Args{
-			Class: "body",
-		},
-			Label(Args{
-				Type:  "h3",
-				Class: "title",
-				Value: "Title",
-			}),
-			Label(Args{
-				Type:  "span",
-				Class: "sms",
-				Value: "Contenido",
-			}),
+		core.Box(
+			core.Args{
+				Class: "body",
+			},
+			core.Label(
+				core.Args{
+					Type:  "h3",
+					Class: "title",
+					Value: args.Title,
+				}),
+			core.Label(
+				core.Args{
+					Type:  "span",
+					Class: "sms",
+					Value: args.Content,
+				}),
 		),
-		Styles("./components/post/go.css"),
+		core.Styles("./components/post/go.css"),
 	)
 }
