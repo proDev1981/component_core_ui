@@ -1,16 +1,17 @@
 package post
 
 import "app/core"
+import "fmt"
 
 func New(args Args) core.Element {
 
 	return core.Box(
 		core.Args{
-			Class: "parent",
+			Class: "post-parent",
 		},
 		core.Box(
 			core.Args{
-				Class: "avatar",
+				Class: "post-avatar",
 			},
 			core.Img(
 				core.Args{
@@ -20,21 +21,34 @@ func New(args Args) core.Element {
 		),
 		core.Box(
 			core.Args{
-				Class: "body",
+				Class: "post-body",
 			},
 			core.Label(
 				core.Args{
 					Type:  "h3",
-					Class: "title",
+					Class: "post-title",
 					Value: args.Title,
 				}),
 			core.Label(
 				core.Args{
 					Type:  "span",
-					Class: "sms",
+					Class: "post-sms",
 					Value: args.Content,
 				}),
 		),
-		core.Styles("./components/post/go.css"),
+		core.Styles(
+			core.Args{
+				Src: "./components/post/go.css",
+				Key: "post-default",
+			}),
+		core.Styles(
+			core.Args{
+				Value: fmt.Sprintf(
+					"$.post-title{color:%s;} $.post-sms{color:%s;} ${background-color:%s;}",
+					core.Default(args.TitleFg, "green"),
+					core.Default(args.ContenFg, "white"),
+					core.Default(args.BodyBg, "#484343"),
+				),
+			}),
 	)
 }
