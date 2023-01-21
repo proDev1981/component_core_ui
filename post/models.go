@@ -1,10 +1,10 @@
 package post
 
 type Args struct {
-	Image    string
-	Title    string
-	TitleFg  string
-	Content  string
-	ContenFg string
-	BodyBg   string
+	Image        string
+	Title        string
+	ColorTitle   string
+	Content      string
+	ColorContent string
+	BgBody       string
 }

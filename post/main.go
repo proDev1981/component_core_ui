@@ -36,12 +36,10 @@ func New(args Args) core.Element {
 				}),
 		),
 		core.Styles(
-			core.Args{
-				Value: style(
-					core.Default(args.TitleFg, "green"),
-					core.Default(args.ContenFg, "white"),
-					core.Default(args.BodyBg, "#484343"),
-				),
-			}),
+			gcssPost(
+				args.ColorTitle,
+				args.ColorContent,
+				args.BgBody,
+			)),
 	)
 }
