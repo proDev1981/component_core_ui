@@ -1,7 +1,6 @@
 package post
 
 import "app/core"
-import "fmt"
 
 func New(args Args) core.Element {
 
@@ -38,13 +37,7 @@ func New(args Args) core.Element {
 		),
 		core.Styles(
 			core.Args{
-				Src: "./components/post/go.css",
-				Key: "post-default",
-			}),
-		core.Styles(
-			core.Args{
-				Value: fmt.Sprintf(
-					"$.post-title{color:%s;} $.post-sms{color:%s;} ${background-color:%s;}",
+				Value: style(
 					core.Default(args.TitleFg, "green"),
 					core.Default(args.ContenFg, "white"),
 					core.Default(args.BodyBg, "#484343"),
